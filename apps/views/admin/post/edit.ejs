@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
+
+  
+    <%- include ../layout/head %>
+</head>
+<body>
+    <div class="container">
+        <%- include ../layout/nav %>
+
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Edit post
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form role="form">
+                                <input type="hidden" class="id" name="id" value="<%- data.post.id %>">
+                                <% if(data && data.error){ %>
+                                    <div id="login-alert" class="alert alert-danger col-sm-12">
+                                        <%=  data.error %>
+                                    </div>
+                                <% } %>
+                                
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input class="form-control title" name="title" placeholder="Title" value="<%- data.post.title %>">
+                                </div>
+                                <div class="form-group">
+                                    <label>Content</label>
+                                    <textarea id="" cols="30" rows="10" class="form-control content" name="content" placeholder="content" value="">                                        
+                                        <%- data.post.content %>
+                                    </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Author</label>
+                                    <input class="form-control author" name="author" placeholder="Author" value="<%- data.post.author %>">
+                                </div>
+                               
+                                <button type="submit" class="btn btn-success post_edit">Edit</button>
+                            </form>
+                        </div>
+                        
+                        <!-- /.col-lg-6 (nested) -->
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+
+    </div>
+        
+    <script src="/static/js/post.js"></script>
+    <!-- <script src="/static/js/tinymce.min.js"></script> -->
+</body>
+</html>
